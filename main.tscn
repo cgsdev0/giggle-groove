@@ -1,12 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://ssg014ypuveb"]
+[gd_scene load_steps=3 format=3 uid="uid://ssg014ypuveb"]
 
-[ext_resource type="Script" path="res://not_joke.gd" id="1_h03go"]
-[ext_resource type="Resource" uid="uid://cmg0kr0heauom" path="res://jokes/chicken.txt" id="2_jwn5v"]
-[ext_resource type="AudioStream" uid="uid://d1uqcepivcwhp" path="res://jokes/chicken.wav" id="3_oytfw"]
+[ext_resource type="Script" path="res://not_joke.gd" id="1_c476h"]
+[ext_resource type="Resource" uid="uid://cmg0kr0heauom" path="res://jokes/chicken.txt" id="2_1ln6f"]
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_h03go")
-joke = ExtResource("2_jwn5v")
+[node name="Node" type="Node"]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_oytfw")
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_top = 0.151235
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c476h")
+joke = ExtResource("2_1ln6f")
+metadata/_edit_use_anchors_ = true
+
+[node name="Cursor" type="Control" parent="Control"]
+anchors_preset = 0
+offset_top = -33.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bar" type="ColorRect" parent="Control/Cursor"]
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 80.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control"]
+
+[node name="Words" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
