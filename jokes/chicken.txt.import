@@ -1,0 +1,14 @@
+[remap]
+
+importer="audio.label_importer"
+type="AudioLabelList"
+uid="uid://cmg0kr0heauom"
+path="res://godot/imported/chicken.txt-98e3c435cfb3f84b13bd8d16e0d572d0.tres"
+
+[deps]
+
+source_file="res://jokes/chicken.txt"
+dest_files=["res://godot/imported/chicken.txt-98e3c435cfb3f84b13bd8d16e0d572d0.tres"]
+
+[params]
+
