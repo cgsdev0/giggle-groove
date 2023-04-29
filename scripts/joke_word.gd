@@ -13,10 +13,10 @@ var missed = false
 func _ready():
 	var l = get_child(0)
 	string_size = l.get_theme_font("font").get_string_size(label.label, HORIZONTAL_ALIGNMENT_LEFT, -1, l.get_theme_font_size("font_size"))
-	var initial_size = anchor_right - anchor_left
-	var min_size = (string_size.x + 16) / controller.get_rect().size.x
-	if min_size > initial_size:
-		anchor_right = anchor_left + min_size
+#	var initial_size = anchor_right - anchor_left
+#	var min_size = (string_size.x + 16) / controller.get_rect().size.x
+#	if min_size > initial_size:
+#		anchor_right = anchor_left + min_size
 		
 	default_text()
 	

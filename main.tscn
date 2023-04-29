@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cma485vc1b1ab" path="res://joke.theme" id="1_agnvs"]
 [ext_resource type="Script" path="res://not_joke.gd" id="1_c476h"]
-[ext_resource type="Resource" uid="uid://cmg0kr0heauom" path="res://jokes/chicken.txt" id="2_1ln6f"]
+[ext_resource type="Resource" uid="uid://bjfia61sy4tgg" path="res://jokes/captain_speaking.txt" id="3_3jfhd"]
 
 [node name="Node" type="Node"]
 
@@ -15,7 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_agnvs")
 script = ExtResource("1_c476h")
-joke = ExtResource("2_1ln6f")
+joke = ExtResource("3_3jfhd")
 metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control"]
@@ -49,4 +49,26 @@ offset_left = -10.0
 offset_top = 25.0
 offset_right = 10.0
 offset_bottom = 125.0
+color = Color(0, 0, 0, 0.533333)
+
+[node name="Precursor" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="Bar" type="ColorRect" parent="Control/Precursor"]
+layout_mode = 0
+offset_left = -140.0
+offset_top = -9.0
+offset_right = 11.0
+offset_bottom = 9.0
+color = Color(0, 0, 0, 0.533333)
+
+[node name="Bar2" type="ColorRect" parent="Control/Precursor"]
+layout_mode = 0
+offset_left = -140.0
+offset_top = 149.0
+offset_right = 11.0
+offset_bottom = 167.0
 color = Color(0, 0, 0, 0.533333)

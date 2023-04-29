@@ -1,0 +1,14 @@
+[remap]
+
+importer="audio.label_importer"
+type="AudioLabelList"
+uid="uid://bjfia61sy4tgg"
+path="res://godot/imported/captain_speaking.txt-dfeecfb67d822b053b49cfc22d6bb9c4.tres"
+
+[deps]
+
+source_file="res://jokes/captain_speaking.txt"
+dest_files=["res://godot/imported/captain_speaking.txt-dfeecfb67d822b053b49cfc22d6bb9c4.tres"]
+
+[params]
+
