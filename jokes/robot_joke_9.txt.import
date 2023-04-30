@@ -1,0 +1,14 @@
+[remap]
+
+importer="audio.label_importer"
+type="AudioLabelList"
+uid="uid://7psbt1m64hf7"
+path="res://godot/imported/robot_joke_9.txt-4d7f97a68ea254733fe306aa0ee1913a.tres"
+
+[deps]
+
+source_file="res://jokes/robot_joke_9.txt"
+dest_files=["res://godot/imported/robot_joke_9.txt-4d7f97a68ea254733fe306aa0ee1913a.tres"]
+
+[params]
+
