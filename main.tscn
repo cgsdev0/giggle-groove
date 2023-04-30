@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cma485vc1b1ab" path="res://joke.theme" id="1_agnvs"]
 [ext_resource type="Script" path="res://not_joke.gd" id="1_c476h"]
-[ext_resource type="Resource" uid="uid://cks7mcsrdpthx" path="res://jokes/robot_joke_7.txt" id="3_2kymy"]
+[ext_resource type="Resource" uid="uid://cl57owrmfqjlf" path="res://jokes/robot_joke_5.txt" id="3_ppqeh"]
 
 [node name="Node" type="Node"]
 
@@ -15,7 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_agnvs")
 script = ExtResource("1_c476h")
-joke = ExtResource("3_2kymy")
+joke = ExtResource("3_ppqeh")
 metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control"]

@@ -12,7 +12,10 @@ var curr = 0
 
 var pretimer = 0.0
 
+var regex = RegEx.new()
+
 func start_joke(section: int = 0):
+	regex.compile("{(\\d+)}")
 	pretimer = 0.0
 	var should_start = (section == 0)
 	for child in $Words.get_children():
@@ -47,7 +50,10 @@ func start_joke(section: int = 0):
 			p.anchor_left = (label.start - start) / (pause.start - start) * 0.8 + 0.2
 			p.anchor_right = (label.end - start) / (pause.start - start) * 0.8 + 0.2
 			
-		if (randf_range(1.0, 100.0) < 50.0):
+		var result = regex.search(label.label)
+		if result:
+			shift = int(result.get_string(1))
+		elif (randf_range(1.0, 100.0) < 50.0):
 			if label.label[0] != '-':
 				shift = (shift + 1) % 2
 		p.row = shift
@@ -74,21 +80,23 @@ func _unhandled_key_input(event):
 	if event.is_action_pressed("row1"):
 		print("MISCLICK")
 		
-func get_progress():
+		
+func get_screen_length():
 	if pause:
-		return ($AudioStreamPlayer.get_playback_position() - start) / (pause.start - start) * 0.8 + 0.2
+		return (pause.start - start)
 	else:
-		return ($AudioStreamPlayer.get_playback_position() - start) / (joke.audio.get_length() - start) * 0.8 + 0.2
+		return (joke.audio.get_length() - start)
+		
+func get_progress():
+	var scr_len = get_screen_length()
+	if !$AudioStreamPlayer.playing:
+		return (pretimer - 1.5 + 0.2 * scr_len) / scr_len
+	return ($AudioStreamPlayer.get_playback_position() - start) /  scr_len * 0.8 + 0.2
 	
 
 func _process(delta):
 	pretimer += delta
-	var scr_len = 1.0
-	if pause:
-		scr_len =  (pause.start - start)
-	else:
-		scr_len =  (joke.audio.get_length() - start)
-	
+	var scr_len = get_screen_length()
 	if pause:
 		if $AudioStreamPlayer.get_playback_position() > pause.start: # + (pause.end - pause.start) / 4:
 			curr += 1
@@ -99,7 +107,4 @@ func _process(delta):
 		start_joke()
 		
 	$Precursor.anchor_left = (pretimer - 0.5) / scr_len
-	if $AudioStreamPlayer.playing:
-		$Cursor.anchor_left = get_progress()
-	else:
-		$Cursor.anchor_left = (pretimer - 1.5 + 0.2 * scr_len) / scr_len
+	$Cursor.anchor_left = get_progress()
