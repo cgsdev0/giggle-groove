@@ -12,8 +12,27 @@ func tween_out(l1, l2):
 	tween.set_parallel()
 	tween.tween_property(l1, "energy", 0.58, 0.2)
 	tween.tween_property(l2, "energy", 0.0, 0.2)
-	
+
+func _process(delta):
+	match voice:
+		AudioLabelList.Voice.SAM:
+			if Input.is_action_just_pressed("row0"):
+				if !$Node2D/Sam/AnimationPlayer.is_playing():
+					$Node2D/Sam/AnimationPlayer.play("bounce_left")
+			if Input.is_action_just_pressed("row1"):
+				if !$Node2D/Sam/AnimationPlayer.is_playing():
+					$Node2D/Sam/AnimationPlayer.play("bounce_right")
+		AudioLabelList.Voice.ROBOT:
+			if Input.is_action_just_pressed("row0"):
+				if !$Node2D2/Robot/AnimationPlayer.is_playing():
+					$Node2D2/Robot/AnimationPlayer.play("bounce_left")
+			if Input.is_action_just_pressed("row1"):
+				if !$Node2D2/Robot/AnimationPlayer.is_playing():
+					$Node2D2/Robot/AnimationPlayer.play("bounce_right")
+					
+var voice = null
 func on_joke(joke):
+	voice = joke.voice
 	match joke.voice:
 		AudioLabelList.Voice.ROBOT:
 			tween_out($RobotLight, $SamLight)

@@ -77,6 +77,21 @@
 [ext_resource type="Shader" path="res://vignette.gdshader" id="73_of7ho"]
 [ext_resource type="Script" path="res://scripts/theme_garbage_label.gd" id="76_y7e8x"]
 
+[sub_resource type="Animation" id="Animation_13i51"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-5.0]
+}
+
 [sub_resource type="Animation" id="Animation_wucxp"]
 resource_name = "fade_out"
 length = 3.0
@@ -93,40 +108,10 @@ tracks/0/keys = {
 "values": [-5.0, -50.0]
 }
 
-[sub_resource type="Animation" id="Animation_13i51"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:volume_db")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-5.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6525a"]
 _data = {
 "RESET": SubResource("Animation_13i51"),
 "fade_out": SubResource("Animation_wucxp")
-}
-
-[sub_resource type="Animation" id="Animation_ghdum"]
-resource_name = "show_ui"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:anchor_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.435275, 1),
-"update": 0,
-"values": [1.0, 0.799]
 }
 
 [sub_resource type="Animation" id="Animation_7ylah"]
@@ -144,6 +129,21 @@ tracks/0/keys = {
 "values": [1.0]
 }
 
+[sub_resource type="Animation" id="Animation_ghdum"]
+resource_name = "show_ui"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.435275, 1),
+"update": 0,
+"values": [1.0, 0.799]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5skac"]
 _data = {
 "RESET": SubResource("Animation_7ylah"),
@@ -155,6 +155,21 @@ shader = ExtResource("73_of7ho")
 shader_parameter/vignette_intensity = 0.3
 shader_parameter/vignette_opacity = 0.4
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_drbgi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_p0vb3"]
 resource_name = "fade_out"
@@ -170,21 +185,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_drbgi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RichTextLabel:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0h1f2"]
