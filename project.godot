@@ -14,7 +14,11 @@ config/name="LD53"
 run/main_scene="res://main.tscn"
 config/use_hidden_project_data_directory=false
 config/features=PackedStringArray("4.0", "GL Compatibility")
+boot_splash/bg_color=Color(0.141176, 0.392157, 0.713726, 1)
+boot_splash/image="res://badcopgames.png"
+boot_splash/fullsize=false
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=2000
 
 [autoload]
 

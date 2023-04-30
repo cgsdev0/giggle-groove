@@ -96,6 +96,7 @@ func clear():
 		child.queue_free()
 		
 func start_joke(section: int = 0):
+	mute(false)
 	regex.compile("{(\\d+)}")
 	pretimer = 0.0
 	var should_start = (section == 0)

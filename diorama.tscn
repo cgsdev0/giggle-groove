@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bsiw6671tksn3"]
+[gd_scene load_steps=17 format=3 uid="uid://bsiw6671tksn3"]
 
 [ext_resource type="Texture2D" uid="uid://cb6e6o80418hv" path="res://textures/stage.png" id="1_ce564"]
 [ext_resource type="Script" path="res://scripts/diorama.gd" id="1_ud0bw"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://cjjhn63iwl85k" path="res://textures/spotlight.png" id="5_ftyng"]
 [ext_resource type="Texture2D" uid="uid://bikp26vnhumn0" path="res://textures/bricks.png" id="6_rrsai"]
 [ext_resource type="AudioStream" uid="uid://dq3qrv8dv0of5" path="res://effects/you_win.wav" id="9_kdtxl"]
+[ext_resource type="Texture2D" uid="uid://drqqowsceedg5" path="res://textures/robot.png" id="10_sxgs3"]
+[ext_resource type="Texture2D" uid="uid://dghhix2jqqs34" path="res://textures/sam.png" id="11_vj5u0"]
+[ext_resource type="Texture2D" uid="uid://l0lgfu42u21n" path="res://textures/microphone.png" id="12_biw4e"]
 
 [sub_resource type="Animation" id="Animation_8v42j"]
 resource_name = "open"
@@ -203,6 +206,18 @@ region_rect = Rect2(0, 0, 1920, 1080)
 [node name="Stage" type="Sprite2D" parent="."]
 position = Vector2(962, 890)
 texture = ExtResource("1_ce564")
+
+[node name="Robot" type="Sprite2D" parent="."]
+position = Vector2(1239, 577)
+texture = ExtResource("10_sxgs3")
+
+[node name="Sam" type="Sprite2D" parent="."]
+position = Vector2(636, 586)
+texture = ExtResource("11_vj5u0")
+
+[node name="Microphone" type="Sprite2D" parent="."]
+position = Vector2(1444, 573)
+texture = ExtResource("12_biw4e")
 
 [node name="SamLight" type="PointLight2D" parent="."]
 position = Vector2(640, 403)
