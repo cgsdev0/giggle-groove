@@ -154,8 +154,10 @@ func start_joke(section: int = 0):
 		l.fit_content = true
 		l.scroll_active = false
 		l.layout_mode = 1
-		l.anchors_preset = Control.LayoutPreset.PRESET_FULL_RECT
+		l.set_anchors_preset(PRESET_FULL_RECT)
+		l.anchor_top = 0.1
 		l.bbcode_enabled = true
+		p.rtl = l
 		p.add_child(l)
 		$Words.add_child(p)
 		last_anchor_right = p.anchor_right
@@ -210,7 +212,16 @@ func get_progress():
 		return (pretimer - 1.5 + 0.2 * scr_len) / scr_len
 	return ($AudioStreamPlayer.get_playback_position() - start) /  scr_len * 0.8 + 0.2
 
+var initial_font_size = null
+func update_text_size():
+	if initial_font_size == null:
+		initial_font_size = theme.default_font_size
+	var si = get_viewport_rect().size
+	var scale_factor = min(si.x / 1920.0, si.y / 1080.0)
+	theme.default_font_size = int(initial_font_size * scale_factor)
+	
 func _process(delta):
+	update_text_size()
 	if ($AudioStreamPlayer.get_playback_position() > react_at) && !laughing:
 		laughing = true
 		if is_laughable():

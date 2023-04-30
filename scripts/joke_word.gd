@@ -9,9 +9,10 @@ var row = 0
 var string_size
 var hit = false
 var missed = false
+var rtl
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var l = get_child(0)
+	var l = rtl
 	string_size = l.get_theme_font("font").get_string_size(label.label_clean, HORIZONTAL_ALIGNMENT_LEFT, -1, l.get_theme_font_size("font_size"))
 #	var initial_size = anchor_right - anchor_left
 #	var min_size = (string_size.x + 16) / controller.get_rect().size.x
@@ -22,11 +23,11 @@ func _ready():
 	
 func default_text():
 	var text = label.label_clean # "[color=red]" + label.label[0] + "[/color]" + label.label.substr(1)
-	get_child(0).text = "[center]" + text + "[/center]"
+	rtl.text = "[center]" + text + "[/center]"
 	
 func highlight_text():
 	var text = "[center][color=yellow]" + label.label_clean + "[/color][/center]"
-	get_child(0).text = text
+	rtl.text = text
 
 const SLOP = 0.005
 func _input(event):
