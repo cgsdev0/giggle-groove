@@ -244,10 +244,10 @@ func _process(delta):
 		if $AudioStreamPlayer.get_playback_position() > pause.start: # + (pause.end - pause.start) / 4:
 			curr += 1
 			start_joke(curr)
-	if OS.is_debug_build() and Input.is_action_just_pressed("ui_accept"):
-		$AudioStreamPlayer.stop()
-		curr = 0
-		start_joke()
+#	if OS.is_debug_build() and Input.is_action_just_pressed("ui_accept"):
+#		$AudioStreamPlayer.stop()
+#		curr = 0
+#		start_joke()
 		
 	$Precursor.anchor_left = get_progress() + 0.2
-	$Cursor.anchor_left = get_progress()
+	$Cursor.anchor_right = get_progress()

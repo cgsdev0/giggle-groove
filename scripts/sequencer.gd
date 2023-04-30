@@ -14,6 +14,7 @@ func _ready():
 	# on_next()
 
 func on_game_end1():
+	$RootControl/Control.clear()
 	$RootControl/Control/AnimationPlayer.play_backwards("show_ui")
 func on_start():
 	count_jokes = 0

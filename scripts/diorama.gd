@@ -30,7 +30,7 @@ func _process(delta):
 				if !$Node2D2/Robot/AnimationPlayer.is_playing():
 					$Node2D2/Robot/AnimationPlayer.play("bounce_right")
 					
-var voice = null
+var voice = AudioLabelList.Voice.SAM
 func on_joke(joke):
 	voice = joke.voice
 	match joke.voice:
