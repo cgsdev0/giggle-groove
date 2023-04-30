@@ -22,10 +22,10 @@ func _ready():
 	
 func default_text():
 	var text = label.label # "[color=red]" + label.label[0] + "[/color]" + label.label.substr(1)
-	get_child(0).text = text
+	get_child(0).text = "[center]" + text + "[/center]"
 	
 func highlight_text():
-	var text = "[color=yellow]" + label.label + "[/color]"
+	var text = "[center][color=yellow]" + label.label + "[/color][/center]"
 	get_child(0).text = text
 
 const SLOP = 0.01
@@ -48,7 +48,6 @@ func _input(event):
 			theme_type_variation = "MissedJoke"
 			
 func _process(delta):
-	
 	if controller.get_progress() > anchor_left && controller.get_progress() < anchor_right:
 		# Highlight when cursor over
 		if !highlighted && !hit:

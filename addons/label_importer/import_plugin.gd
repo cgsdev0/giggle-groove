@@ -47,12 +47,18 @@ func _import(source_file, save_path, options, r_platform_variants, r_gen_files):
 	var p = source_file.split('/')
 	var audio_file = "res://jokes/" + p[len(p) - 1].split('.')[0] + ".wav"
 	var label_list = AudioLabelList.new(load(audio_file))
+	var idx = 0
 	while line:
 		var s = line.split('\t')
 		var label = AudioLabel.new(float(s[0]), float(s[1]), s[2])
 		label_list.labels.push_back(label)
-		print(s)
+#		if s[2][0] == '-' && idx > 0:
+#			if label_list.labels[idx - 1].label[0] == '-':
+#				label_list.labels[idx - 1].label = "[center]" + label_list.labels[idx - 1].label + "[/center]"
+#			else:
+#				label_list.labels[idx - 1].label = "[right]" + label_list.labels[idx - 1].label + "[/right]"
 		line = file.get_line()
+		idx += 1
 
 	file.close()
 	print(save_path)
