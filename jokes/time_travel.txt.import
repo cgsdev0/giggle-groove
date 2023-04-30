@@ -1,0 +1,14 @@
+[remap]
+
+importer="audio.label_importer"
+type="AudioLabelList"
+uid="uid://dbl2ftwudetcj"
+path="res://godot/imported/time_travel.txt-17c286196853e2a781eafde05e00e25d.tres"
+
+[deps]
+
+source_file="res://jokes/time_travel.txt"
+dest_files=["res://godot/imported/time_travel.txt-17c286196853e2a781eafde05e00e25d.tres"]
+
+[params]
+

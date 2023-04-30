@@ -1,0 +1,14 @@
+[remap]
+
+importer="audio.label_importer"
+type="AudioLabelList"
+uid="uid://cm1rxj8ub16iq"
+path="res://godot/imported/santas_helpers.txt-b5d2da6ec22b40a5e2941c3eb3184cd5.tres"
+
+[deps]
+
+source_file="res://jokes/santas_helpers.txt"
+dest_files=["res://godot/imported/santas_helpers.txt-b5d2da6ec22b40a5e2941c3eb3184cd5.tres"]
+
+[params]
+
