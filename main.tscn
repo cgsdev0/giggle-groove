@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://babgibemuvvnb"]
+[gd_scene load_steps=98 format=3 uid="uid://babgibemuvvnb"]
 
 [ext_resource type="Theme" uid="uid://cma485vc1b1ab" path="res://joke.theme" id="1_agnvs"]
 [ext_resource type="Script" path="res://not_joke.gd" id="1_c476h"]
@@ -47,6 +47,7 @@
 [ext_resource type="AudioStream" uid="uid://btgfqgcn0jatv" path="res://laughtrack/cd0c2b1c-230e-49e1-b11a-d645922f124e.wav" id="22_ss2pu"]
 [ext_resource type="AudioStream" uid="uid://cjybuisfa8vhs" path="res://laughtrack/dbb0c593-4840-4d2b-8098-fcaa50995a59.wav" id="23_mg30d"]
 [ext_resource type="AudioStream" uid="uid://0dh8hrbu2h01" path="res://laughtrack/f0079fd8-eb2a-40eb-891f-3c6e7600815d.wav" id="24_0sr1h"]
+[ext_resource type="FontFile" uid="uid://vsxu0miuxnb0" path="res://Poppin-Regular.ttf" id="26_dui2e"]
 [ext_resource type="AudioStream" uid="uid://clpj183u31h3p" path="res://mumbles/grumble_mumble.wav" id="26_fl2ij"]
 [ext_resource type="AudioStream" uid="uid://d2tti6lb28f01" path="res://jeers/5d727549-32b4-4573-9b24-b01ef1f032d3.wav" id="26_kkoie"]
 [ext_resource type="AudioStream" uid="uid://c34d2jdjymya3" path="res://mumbles/ambience.wav" id="27_fs7cu"]
@@ -78,6 +79,21 @@
 [ext_resource type="Script" path="res://scripts/theme_garbage_label.gd" id="76_y7e8x"]
 [ext_resource type="Shortcut" uid="uid://p6ahtkhkjd0l" path="res://controller_shortcut.tres" id="77_4agxv"]
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_jhqyx"]
+color = Color(0.611765, 0.611765, 0.611765, 1)
+thickness = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3n24p"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
 [sub_resource type="Gradient" id="Gradient_yxhtn"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.375451, 0.610108, 1)
@@ -86,6 +102,16 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5bkt5"]
 gradient = SubResource("Gradient_yxhtn")
 width = 300
+
+[sub_resource type="Gradient" id="Gradient_yljsd"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.375451, 0.610108, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_djcae"]
+gradient = SubResource("Gradient_yljsd")
+width = 300
+height = 1000
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_y5vv7"]
 content_margin_left = 0.0
@@ -296,6 +322,90 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.643137, 0.643137, 0.643137, 1)
 
+[node name="HSeparator" type="HSeparator" parent="RootControl/Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -2.00003
+offset_right = 3.0
+offset_bottom = 1.99997
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_jhqyx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RootControl/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0616319
+anchor_right = 1.0
+anchor_bottom = 0.998096
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="RootControl/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="RootControl/Control/VBoxContainer/AspectRatioContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="Panel" type="Panel" parent="RootControl/Control/VBoxContainer/AspectRatioContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_3n24p")
+
+[node name="Label" type="Label" parent="RootControl/Control/VBoxContainer/AspectRatioContainer/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("26_dui2e")
+text = "W"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="RootControl/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="RootControl/Control/VBoxContainer/AspectRatioContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="Panel" type="Panel" parent="RootControl/Control/VBoxContainer/AspectRatioContainer2/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_3n24p")
+
+[node name="Label" type="Label" parent="RootControl/Control/VBoxContainer/AspectRatioContainer2/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("26_dui2e")
+text = "S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Precursor" type="Control" parent="RootControl/Control"]
 layout_mode = 1
 anchors_preset = 9
@@ -323,8 +433,7 @@ modulate = Color(1, 1, 1, 0.235294)
 layout_mode = 1
 offset_right = 364.0
 offset_bottom = 136.0
-texture = SubResource("GradientTexture2D_5bkt5")
-expand_mode = 2
+texture = SubResource("GradientTexture2D_djcae")
 
 [node name="Words" type="Control" parent="RootControl/Control"]
 layout_mode = 1
@@ -422,6 +531,7 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 layout_mode = 2
 shortcut = ExtResource("77_4agxv")
+shortcut_in_tooltip = false
 text = "START"
 
 [node name="Vignette" type="ColorRect" parent="RootControl"]
@@ -541,6 +651,7 @@ script = ExtResource("76_y7e8x")
 [node name="Button" type="Button" parent="RootControl/Scoreboard/Summary/VBoxContainer2"]
 layout_mode = 2
 shortcut = ExtResource("77_4agxv")
+shortcut_in_tooltip = false
 text = "Continue"
 
 [connection signal="pressed" from="RootControl/CenterContainer/Button" to="." method="_on_button_pressed"]
