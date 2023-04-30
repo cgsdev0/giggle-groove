@@ -77,9 +77,21 @@ func start_joke(section: int = 0):
 func _unhandled_key_input(event):
 	if event.is_action_pressed("row0"):
 		print("MISCLICK")
+		flub()
 	if event.is_action_pressed("row1"):
 		print("MISCLICK")
+		flub()
 		
+func adjust_volume(val: float):
+	var joke_bus = AudioServer.get_bus_index("Joke")
+	AudioServer.set_bus_volume_db(joke_bus, val)
+	
+func flub(val: bool = true):
+	if val:
+		$FlubSam.play_random()
+		adjust_volume(-20.0)
+	else:
+		adjust_volume(0.0)
 		
 func get_screen_length():
 	if pause:

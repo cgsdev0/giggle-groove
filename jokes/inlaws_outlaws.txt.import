@@ -1,0 +1,14 @@
+[remap]
+
+importer="audio.label_importer"
+type="AudioLabelList"
+uid="uid://cd21osg2qduk5"
+path="res://godot/imported/inlaws_outlaws.txt-9ba032908b82f2ccd0e9f3e82c071490.tres"
+
+[deps]
+
+source_file="res://jokes/inlaws_outlaws.txt"
+dest_files=["res://godot/imported/inlaws_outlaws.txt-9ba032908b82f2ccd0e9f3e82c071490.tres"]
+
+[params]
+

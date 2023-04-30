@@ -1,0 +1,14 @@
+[remap]
+
+importer="audio.label_importer"
+type="AudioLabelList"
+uid="uid://casyocjx8pawt"
+path="res://godot/imported/poker_cheetahs.txt-ba094b61681ac4aae46e8ea84e6a158f.tres"
+
+[deps]
+
+source_file="res://jokes/poker_cheetahs.txt"
+dest_files=["res://godot/imported/poker_cheetahs.txt-ba094b61681ac4aae46e8ea84e6a158f.tres"]
+
+[params]
+

@@ -28,7 +28,7 @@ func highlight_text():
 	var text = "[center][color=yellow]" + label.label_clean + "[/color][/center]"
 	get_child(0).text = text
 
-const SLOP = 0.01
+const SLOP = 0.005
 func _input(event):
 	if get_viewport().is_input_handled():
 		return
@@ -38,14 +38,16 @@ func _input(event):
 			get_viewport().set_input_as_handled()
 			hit = true
 			theme_type_variation = "HitJoke"
+			controller.flub(false)
 			return
 	
 	if controller.get_progress() > anchor_left + SLOP && controller.get_progress() < anchor_right - SLOP:
 		# Check if the wrong key was hit; this overrides a success
-		if event.is_action_pressed("row" + str((row + 1) % 2)) || (event.is_action_pressed("row" + str(row)) && hit):
+		if event.is_action_pressed("row" + str((row + 1) % 2)) || (event.is_action_pressed("row" + str(row)) && hit) && !missed:
 			hit = false
 			missed = true
 			theme_type_variation = "MissedJoke"
+			controller.flub(true)
 			
 func _process(delta):
 	if controller.get_progress() > anchor_left && controller.get_progress() < anchor_right:

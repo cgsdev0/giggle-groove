@@ -1,0 +1,14 @@
+[remap]
+
+importer="audio.label_importer"
+type="AudioLabelList"
+uid="uid://ccshpgtc5vw76"
+path="res://godot/imported/instagram.txt-934ae86bf7f1e971d13ed65f11eae756.tres"
+
+[deps]
+
+source_file="res://jokes/instagram.txt"
+dest_files=["res://godot/imported/instagram.txt-934ae86bf7f1e971d13ed65f11eae756.tres"]
+
+[params]
+

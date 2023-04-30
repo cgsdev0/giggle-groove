@@ -1,0 +1,14 @@
+[remap]
+
+importer="audio.label_importer"
+type="AudioLabelList"
+uid="uid://d2jed5cvs2n0k"
+path="res://godot/imported/plateau.txt-ea301a5cc34fb4ef642085640c0090f5.tres"
+
+[deps]
+
+source_file="res://jokes/plateau.txt"
+dest_files=["res://godot/imported/plateau.txt-ea301a5cc34fb4ef642085640c0090f5.tres"]
+
+[params]
+

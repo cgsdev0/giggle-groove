@@ -1,0 +1,14 @@
+[remap]
+
+importer="audio.label_importer"
+type="AudioLabelList"
+uid="uid://d14w1prbmrh46"
+path="res://godot/imported/flamingo.txt-2d1b05b051a44d948a68a31b405fba8b.tres"
+
+[deps]
+
+source_file="res://jokes/flamingo.txt"
+dest_files=["res://godot/imported/flamingo.txt-2d1b05b051a44d948a68a31b405fba8b.tres"]
+
+[params]
+
