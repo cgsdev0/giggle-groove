@@ -1,0 +1,200 @@
+[gd_scene load_steps=12 format=3 uid="uid://bsiw6671tksn3"]
+
+[ext_resource type="Texture2D" uid="uid://cb6e6o80418hv" path="res://textures/stage.png" id="1_ce564"]
+[ext_resource type="Script" path="res://scripts/diorama.gd" id="1_ud0bw"]
+[ext_resource type="Texture2D" uid="uid://buttq4bk2cogq" path="res://textures/side_curtain.png" id="1_yioi7"]
+[ext_resource type="Texture2D" uid="uid://cxict1n5ifel0" path="res://textures/left_curtain.png" id="2_5vu6i"]
+[ext_resource type="Texture2D" uid="uid://2b7ofrifusyu" path="res://textures/spotlight2.png" id="3_2y8my"]
+[ext_resource type="Texture2D" uid="uid://d1kay8ipmcqhx" path="res://textures/right_curtain.png" id="3_h8tao"]
+[ext_resource type="Texture2D" uid="uid://cjjhn63iwl85k" path="res://textures/spotlight.png" id="5_ftyng"]
+[ext_resource type="Texture2D" uid="uid://bikp26vnhumn0" path="res://textures/bricks.png" id="6_rrsai"]
+
+[sub_resource type="Animation" id="Animation_8v42j"]
+resource_name = "open"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftCurtain:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 3.9),
+"transitions": PackedFloat32Array(1.86607, 1),
+"update": 0,
+"values": [Vector2(487, 375), Vector2(-500, 375)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightCurtain:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 3.9),
+"transitions": PackedFloat32Array(1.62451, 1),
+"update": 0,
+"values": [Vector2(1420, 351), Vector2(2500, 351)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SamLight:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 3.2, 3.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.58]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RobotLight:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 3.2, 3.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.58]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RobotLight2:energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2lg5o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftCurtain:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(487, 375)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightCurtain:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1420, 351)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SamLight:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RobotLight:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RobotLight2:energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wwm8b"]
+_data = {
+"RESET": SubResource("Animation_2lg5o"),
+"open": SubResource("Animation_8v42j")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ud0bw")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(962, 890)
+color = Color(0.709804, 0.737255, 0.764706, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("6_rrsai")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1920, 1080)
+
+[node name="Stage" type="Sprite2D" parent="."]
+position = Vector2(962, 890)
+texture = ExtResource("1_ce564")
+
+[node name="SamLight" type="PointLight2D" parent="."]
+position = Vector2(640, 403)
+energy = 0.0
+texture = ExtResource("3_2y8my")
+
+[node name="RobotLight" type="PointLight2D" parent="."]
+position = Vector2(1250, 403)
+energy = 0.0
+texture = ExtResource("3_2y8my")
+
+[node name="LeftCurtain" type="Sprite2D" parent="."]
+position = Vector2(487, 375)
+texture = ExtResource("2_5vu6i")
+
+[node name="RightCurtain" type="Sprite2D" parent="."]
+position = Vector2(1420, 351)
+texture = ExtResource("3_h8tao")
+
+[node name="SideCurtain" type="Sprite2D" parent="."]
+position = Vector2(169, 424)
+texture = ExtResource("1_yioi7")
+
+[node name="SideCurtain2" type="Sprite2D" parent="."]
+position = Vector2(1752, 422)
+texture = ExtResource("1_yioi7")
+flip_h = true
+region_rect = Rect2(0, 0, -1, 0)
+
+[node name="Curtains" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wwm8b")
+}
+
+[node name="RobotLight2" type="PointLight2D" parent="."]
+position = Vector2(960, 331)
+scale = Vector2(1.2, 1.2)
+energy = 0.5
+texture = ExtResource("5_ftyng")

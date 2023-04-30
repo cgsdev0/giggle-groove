@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://babgibemuvvnb"]
+[gd_scene load_steps=73 format=3 uid="uid://babgibemuvvnb"]
 
 [ext_resource type="Theme" uid="uid://cma485vc1b1ab" path="res://joke.theme" id="1_agnvs"]
 [ext_resource type="Script" path="res://not_joke.gd" id="1_c476h"]
@@ -40,6 +40,7 @@
 [ext_resource type="AudioStream" uid="uid://cm742akibnnkd" path="res://laughtrack/7194b23f-3e06-4d0c-8248-85da9e8cdc95.wav" id="18_eflgn"]
 [ext_resource type="AudioStream" uid="uid://ckt1sq2s5feo1" path="res://laughtrack/27635ba9-d2d9-4bdb-80f0-0fcb59eecd94.wav" id="19_236xd"]
 [ext_resource type="AudioStream" uid="uid://ctfqp1qskema4" path="res://laughtrack/a5e6792f-cd4e-42b7-890e-c21e6121436d.wav" id="20_65pjy"]
+[ext_resource type="PackedScene" uid="uid://bpxhymqa43o8w" path="res://visuals.tscn" id="21_e6kjw"]
 [ext_resource type="AudioStream" uid="uid://cmkl8dnu1agyx" path="res://laughtrack/b0f3eada-2fb4-4e9c-8f7c-5bcc15358e1d.wav" id="21_riwdj"]
 [ext_resource type="AudioStream" uid="uid://btgfqgcn0jatv" path="res://laughtrack/cd0c2b1c-230e-49e1-b11a-d645922f124e.wav" id="22_ss2pu"]
 [ext_resource type="AudioStream" uid="uid://cjybuisfa8vhs" path="res://laughtrack/dbb0c593-4840-4d2b-8098-fcaa50995a59.wav" id="23_mg30d"]
@@ -76,6 +77,27 @@
 script = ExtResource("1_madbc")
 jokes = Array[Resource("res://addons/label_importer/audio_label_list.gd")]([ExtResource("3_3jfhd"), ExtResource("2_1ln6f"), ExtResource("3_0k4qi"), ExtResource("5_nxa5c"), ExtResource("6_4xeu6"), ExtResource("7_h8l4o"), ExtResource("8_teytn"), ExtResource("3_vonaj"), ExtResource("3_k2faa"), ExtResource("11_bpilq"), ExtResource("12_ghjq6"), ExtResource("3_ppqeh"), ExtResource("3_rwu0v"), ExtResource("3_2kymy"), ExtResource("16_8qqvi"), ExtResource("3_3bvoc"), ExtResource("3_7acs8"), ExtResource("3_0fixq"), ExtResource("3_aswj6")])
 
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.7778
+stretch_mode = 3
+
+[node name="SubViewportContainer" parent="Control2/AspectRatioContainer" instance=ExtResource("21_e6kjw")]
+layout_mode = 2
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchor_top = 0.799
@@ -85,7 +107,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_agnvs")
 script = ExtResource("1_c476h")
-joke = ExtResource("3_0k4qi")
 metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control"]
@@ -203,7 +224,6 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "hi there"
 autowrap_mode = 0
 metadata/_edit_use_anchors_ = true
 
@@ -226,3 +246,18 @@ grow_horizontal = 0
 text = "10000"
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.635185
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "START"
+
+[connection signal="pressed" from="CenterContainer/Button" to="." method="_on_button_pressed"]

@@ -191,6 +191,8 @@ func flub(val: bool = true):
 	mute(val)
 		
 func get_screen_length():
+	if !joke:
+		return 1
 	if pause:
 		return (pause.start - start)
 	else:
@@ -203,7 +205,6 @@ func get_progress():
 	return ($AudioStreamPlayer.get_playback_position() - start) /  scr_len * 0.8 + 0.2
 
 func _process(delta):
-	print(laughing)
 	if ($AudioStreamPlayer.get_playback_position() > react_at) && !laughing:
 		laughing = true
 		if is_laughable():
@@ -217,8 +218,9 @@ func _process(delta):
 			$Jeers.play_some(1, 1)
 		await get_tree().create_timer(3.0).timeout
 		Signals.next_joke.emit()
-		
-	pretimer += delta
+	
+	if joke:
+		pretimer += delta
 	var scr_len = get_screen_length()
 	if pause:
 		if $AudioStreamPlayer.get_playback_position() > pause.start: # + (pause.end - pause.start) / 4:

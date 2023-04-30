@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 
 Signals="*res://scripts/signals.gd"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/label_importer/plugin.cfg")
