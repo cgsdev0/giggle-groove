@@ -38,6 +38,7 @@ func _input(event):
 			get_viewport().set_input_as_handled()
 			hit = true
 			theme_type_variation = "HitJoke"
+			controller.score(label, true)
 			controller.flub(false)
 			return
 	
@@ -47,6 +48,7 @@ func _input(event):
 			hit = false
 			missed = true
 			theme_type_variation = "MissedJoke"
+			controller.score(label, false)
 			controller.flub(true)
 			
 func _process(delta):
@@ -56,9 +58,11 @@ func _process(delta):
 			highlighted = true
 			highlight_text()
 	
-	# unhiglight after cursor leaves
+	# unhighlight after cursor leaves
 	if controller.get_progress() > anchor_right && highlighted:
 		if !hit:
 			theme_type_variation = "MissedJoke"
+			controller.score(label, false)
+			controller.flub(true)
 		highlighted = false
 		default_text() 
