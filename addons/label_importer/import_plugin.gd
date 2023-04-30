@@ -45,8 +45,12 @@ func _import(source_file, save_path, options, r_platform_variants, r_gen_files):
 
 	var line = file.get_line()
 	var p = source_file.split('/')
-	var audio_file = "res://jokes/" + p[len(p) - 1].split('.')[0] + ".wav"
-	var label_list = AudioLabelList.new(load(audio_file))
+	var basename = p[len(p) - 1].split('.')[0]
+	var audio_file = "res://jokes/" + basename + ".wav"
+	var voice = AudioLabelList.Voice.SAM
+	if basename.begins_with("robot"):
+		voice = AudioLabelList.Voice.ROBOT
+	var label_list = AudioLabelList.new(load(audio_file), voice)
 	var idx = 0
 	var idx_minus_pause = 0
 	var section = 0

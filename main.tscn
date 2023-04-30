@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://babgibemuvvnb"]
+[gd_scene load_steps=72 format=3 uid="uid://babgibemuvvnb"]
 
 [ext_resource type="Theme" uid="uid://cma485vc1b1ab" path="res://joke.theme" id="1_agnvs"]
 [ext_resource type="Script" path="res://not_joke.gd" id="1_c476h"]
@@ -51,11 +51,18 @@
 [ext_resource type="AudioStream" uid="uid://b3ttimcvsfrtk" path="res://jeers/592e6f89-3574-4383-9a98-9687447d0e87.wav" id="28_7yu5a"]
 [ext_resource type="AudioStream" uid="uid://beea83uh8swyh" path="res://jeers/775fbf7e-945b-4c54-a9ca-4fca032412a2.wav" id="29_whsgv"]
 [ext_resource type="AudioStream" uid="uid://bl7kge83m8i7j" path="res://jeers/811f2db6-bfda-451c-ab41-b05016842fb7.wav" id="30_b5moa"]
+[ext_resource type="AudioStream" uid="uid://boocll5ub0ldj" path="res://flubs/robot_1.wav" id="30_pxyx0"]
 [ext_resource type="AudioStream" uid="uid://dkwes0tfnew7c" path="res://jeers/977c8961-e6f8-4eb8-9fee-01e5a9cab0ea.wav" id="31_5as75"]
+[ext_resource type="AudioStream" uid="uid://cljhhj6lqr818" path="res://flubs/robot_2.wav" id="31_mkhbx"]
+[ext_resource type="AudioStream" uid="uid://c6vei3ekwjhgw" path="res://flubs/robot_3.wav" id="32_7t84e"]
 [ext_resource type="AudioStream" uid="uid://dc3xwkx6iquhs" path="res://jeers/6512e712-6d26-4acc-9153-5a736003ef9a.wav" id="32_msbd8"]
 [ext_resource type="AudioStream" uid="uid://lkwv3idfyly3" path="res://jeers/24682eed-c0ff-4953-a391-265d42374622.wav" id="33_cgw35"]
+[ext_resource type="AudioStream" uid="uid://dms8saxp6wbxt" path="res://flubs/robot_4.wav" id="33_qctxc"]
+[ext_resource type="AudioStream" uid="uid://bvy2ksynyqisv" path="res://flubs/robot_5.wav" id="34_05qon"]
 [ext_resource type="AudioStream" uid="uid://o1i3mqq6plsq" path="res://jeers/34168aa0-7e92-4a56-baa2-0c395e4bc34a.wav" id="34_undfw"]
+[ext_resource type="AudioStream" uid="uid://ocvoxoregcyo" path="res://flubs/robot_6.wav" id="35_3mqnp"]
 [ext_resource type="AudioStream" uid="uid://bfkxwx8uyw6qh" path="res://jeers/9127453e-9668-41b3-92e0-78b6eb1405e5.wav" id="35_rj2ta"]
+[ext_resource type="AudioStream" uid="uid://ctejstgr70nx4" path="res://flubs/robot_7.wav" id="36_g7d21"]
 [ext_resource type="AudioStream" uid="uid://bb3iqv5kjd5l3" path="res://jeers/23210582-d093-44ec-9147-5f51aa84ee93.wav" id="36_rkedv"]
 [ext_resource type="AudioStream" uid="uid://n21uqyn2dje4" path="res://jeers/cfa992cb-3c85-4b41-931a-c1f5642f89b4.wav" id="37_uo2g0"]
 [ext_resource type="AudioStream" uid="uid://cgr5atxaned6d" path="res://jeers/da1ddac3-da68-41cd-8ade-7425950e3de3.wav" id="38_1n23c"]
@@ -145,6 +152,13 @@ offset_bottom = 40.0
 [node name="FlubSam" type="AudioStreamPlayer" parent="Control"]
 script = ExtResource("4_b3dwy")
 samples = Array[AudioStream]([ExtResource("5_8t8uh"), ExtResource("6_tmt6q"), ExtResource("7_6saw6"), ExtResource("8_ffaax"), ExtResource("9_47g73"), ExtResource("10_dcsy8")])
+random_strategy = 2
+random_volume_range = 0.4
+random_pitch_range = 0.1
+
+[node name="FlubRobot" type="AudioStreamPlayer" parent="Control"]
+script = ExtResource("4_b3dwy")
+samples = Array[AudioStream]([ExtResource("30_pxyx0"), ExtResource("31_mkhbx"), ExtResource("32_7t84e"), ExtResource("33_qctxc"), ExtResource("34_05qon"), ExtResource("35_3mqnp"), ExtResource("36_g7d21")])
 random_strategy = 2
 random_volume_range = 0.4
 random_pitch_range = 0.1

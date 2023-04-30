@@ -183,7 +183,11 @@ func mute(val: bool = true):
 		
 func flub(val: bool = true):
 	if val:
-		$FlubSam.play_random()
+		match joke.voice:
+			AudioLabelList.Voice.ROBOT:
+				$FlubRobot.play_random()
+			AudioLabelList.Voice.SAM:
+				$FlubSam.play_random()
 	mute(val)
 		
 func get_screen_length():
