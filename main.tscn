@@ -421,6 +421,7 @@ autowrap_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Slap" type="AudioStreamPlayer" parent="RootControl/Scoreboard"]
+volume_db = 3.023
 script = ExtResource("4_b3dwy")
 samples = Array[AudioStream]([ExtResource("45_w5y0g")])
 random_volume_range = 0.3
