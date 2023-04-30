@@ -89,6 +89,12 @@ func tally_score():
 		score_parts.push_back({ "label": "Stutters {score} pts", "score": -1000 * misclicks })
 		
 	return score_parts
+
+func clear():
+	for child in $Words.get_children():
+		$Words.remove_child(child)
+		child.queue_free()
+		
 func start_joke(section: int = 0):
 	regex.compile("{(\\d+)}")
 	pretimer = 0.0
@@ -102,9 +108,7 @@ func start_joke(section: int = 0):
 		scored.clear()
 	scored.push_back([])
 	
-	for child in $Words.get_children():
-		$Words.remove_child(child)
-		child.queue_free()
+	clear()
 		
 	var label_slice = []
 	pause = null
@@ -182,6 +186,8 @@ func mute(val: bool = true):
 		adjust_volume(0.0)
 		
 func flub(val: bool = true):
+	if !joke:
+		return
 	if val:
 		match joke.voice:
 			AudioLabelList.Voice.ROBOT:

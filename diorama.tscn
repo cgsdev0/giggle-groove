@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bsiw6671tksn3"]
+[gd_scene load_steps=14 format=3 uid="uid://bsiw6671tksn3"]
 
 [ext_resource type="Texture2D" uid="uid://cb6e6o80418hv" path="res://textures/stage.png" id="1_ce564"]
 [ext_resource type="Script" path="res://scripts/diorama.gd" id="1_ud0bw"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d1kay8ipmcqhx" path="res://textures/right_curtain.png" id="3_h8tao"]
 [ext_resource type="Texture2D" uid="uid://cjjhn63iwl85k" path="res://textures/spotlight.png" id="5_ftyng"]
 [ext_resource type="Texture2D" uid="uid://bikp26vnhumn0" path="res://textures/bricks.png" id="6_rrsai"]
+[ext_resource type="AudioStream" uid="uid://dq3qrv8dv0of5" path="res://effects/you_win.wav" id="9_kdtxl"]
 
 [sub_resource type="Animation" id="Animation_8v42j"]
 resource_name = "open"
@@ -136,9 +137,52 @@ tracks/4/keys = {
 "values": [0.5]
 }
 
+[sub_resource type="Animation" id="Animation_m4w2u"]
+resource_name = "end_show"
+length = 3.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SamLight:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.58]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RobotLight:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.58]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wwm8b"]
 _data = {
 "RESET": SubResource("Animation_2lg5o"),
+"end_show": SubResource("Animation_m4w2u"),
 "open": SubResource("Animation_8v42j")
 }
 
@@ -198,3 +242,6 @@ position = Vector2(960, 331)
 scale = Vector2(1.2, 1.2)
 energy = 0.5
 texture = ExtResource("5_ftyng")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_kdtxl")

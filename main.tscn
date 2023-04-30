@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://babgibemuvvnb"]
+[gd_scene load_steps=81 format=3 uid="uid://babgibemuvvnb"]
 
 [ext_resource type="Theme" uid="uid://cma485vc1b1ab" path="res://joke.theme" id="1_agnvs"]
 [ext_resource type="Script" path="res://not_joke.gd" id="1_c476h"]
@@ -72,6 +72,86 @@
 [ext_resource type="AudioStream" uid="uid://b322wuppjinmv" path="res://jeers/edc9dcd1-f29f-4f7f-970f-c94a93d9a25f.wav" id="41_p18xk"]
 [ext_resource type="Script" path="res://scripts/scoreboard.gd" id="44_74wyw"]
 [ext_resource type="AudioStream" uid="uid://we6xymvuj05h" path="res://effects/score.wav" id="45_w5y0g"]
+[ext_resource type="Shader" path="res://vignette.gdshader" id="73_of7ho"]
+
+[sub_resource type="Animation" id="Animation_wucxp"]
+resource_name = "fade_out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-5.0, -50.0]
+}
+
+[sub_resource type="Animation" id="Animation_13i51"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-5.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6525a"]
+_data = {
+"RESET": SubResource("Animation_13i51"),
+"fade_out": SubResource("Animation_wucxp")
+}
+
+[sub_resource type="Animation" id="Animation_ghdum"]
+resource_name = "show_ui"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.435275, 1),
+"update": 0,
+"values": [1.0, 0.799]
+}
+
+[sub_resource type="Animation" id="Animation_7ylah"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5skac"]
+_data = {
+"RESET": SubResource("Animation_7ylah"),
+"show_ui": SubResource("Animation_ghdum")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7gyci"]
+shader = ExtResource("73_of7ho")
+shader_parameter/vignette_intensity = 0.3
+shader_parameter/vignette_opacity = 0.4
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [node name="Node" type="Node"]
 script = ExtResource("1_madbc")
@@ -99,10 +179,13 @@ stretch_mode = 3
 layout_mode = 2
 
 [node name="Control" type="Control" parent="."]
+clip_contents = true
 layout_mode = 3
-anchor_top = 0.799
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -0.000976563
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_agnvs")
@@ -194,12 +277,46 @@ samples = Array[AudioStream]([ExtResource("26_kkoie"), ExtResource("27_ylps5"), 
 
 [node name="Grumbles" type="AudioStreamPlayer" parent="Control"]
 stream = ExtResource("26_fl2ij")
-volume_db = -10.0
+volume_db = -5.0
+autoplay = true
+
+[node name="Grumbly" type="AnimationPlayer" parent="Control/Grumbles"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_6525a")
+}
 
 [node name="Ambience" type="AudioStreamPlayer" parent="Control"]
 stream = ExtResource("27_fs7cu")
 volume_db = -10.0
 autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+libraries = {
+"": SubResource("AnimationLibrary_5skac")
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.635185
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "START"
+
+[node name="Vignette" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_7gyci")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Scoreboard" type="Control" parent="."]
 unique_name_in_owner = true
@@ -209,6 +326,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("44_74wyw")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Scoreboard"]
@@ -224,6 +342,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 autowrap_mode = 0
 metadata/_edit_use_anchors_ = true
 
@@ -246,18 +365,5 @@ grow_horizontal = 0
 text = "10000"
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.635185
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Button" type="Button" parent="CenterContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "START"
 
 [connection signal="pressed" from="CenterContainer/Button" to="." method="_on_button_pressed"]
