@@ -4,7 +4,7 @@ class_name JokeController extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	start_joke()
+	pass
 	
 var pause = null
 var start = 0
@@ -16,7 +16,7 @@ var scored = []
 var misclicks = 0
 
 var regex = RegEx.new()
-var react_at = null
+var react_at = 10000
 var laughing = false
 var laugh_streak = 0
 
@@ -41,7 +41,9 @@ func get_summary():
 		return ["Almost!", "Nearly!", "So close!", "Swing and a miss"]
 	if l <= 0.82:
 		return ["Solid joke", "Respectable", "Barely got a laugh", "Rocky"]
-	return ["Excellent", "Great joke", "Sensational!", "Wow!", "Hilarious!", "Comic genius"]
+	if l == 1.0:
+		return ["Absolute perfection.", "Perfect!"]
+	return ["Excellent!", "Great joke!", "Sensational!", "Wow!", "Hilarious!", "Comic genius"]
 	
 func laughability():
 	var results = []
@@ -84,7 +86,7 @@ func tally_score():
 	if laugh_streak > 1:
 		score_parts.push_back({ "label": str(laugh_streak) + "x Laugh streak! +{score} pts", "score": (laugh_streak - 1) * 500 })
 	if misclicks > 0:
-		score_parts.push_back({ "label": "Stutters {score} pts", "score": -100 * misclicks })
+		score_parts.push_back({ "label": "Stutters {score} pts", "score": -1000 * misclicks })
 		
 	return score_parts
 func start_joke(section: int = 0):
@@ -93,7 +95,8 @@ func start_joke(section: int = 0):
 	var should_start = (section == 0)
 	
 	if should_start: # reset state
-		react_at = joke.labels[len(joke.labels) - 1].end + 0.25
+		react_at = joke.labels[len(joke.labels) - 1].end
+		curr = 0
 		laughing = false
 		misclicks = 0
 		scored.clear()
@@ -196,7 +199,8 @@ func get_progress():
 	return ($AudioStreamPlayer.get_playback_position() - start) /  scr_len * 0.8 + 0.2
 
 func _process(delta):
-	if $AudioStreamPlayer.playing && $AudioStreamPlayer.get_playback_position() > react_at && !laughing:
+	print(laughing)
+	if ($AudioStreamPlayer.get_playback_position() > react_at) && !laughing:
 		laughing = true
 		if is_laughable():
 			laugh_streak += 1
@@ -207,7 +211,9 @@ func _process(delta):
 			$Laughtrack.play_some(3, 5)
 		else:
 			$Jeers.play_some(1, 1)
-			
+		await get_tree().create_timer(3.0).timeout
+		Signals.next_joke.emit()
+		
 	pretimer += delta
 	var scr_len = get_screen_length()
 	if pause:
