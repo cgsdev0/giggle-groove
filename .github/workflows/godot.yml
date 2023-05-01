@@ -1,10 +1,10 @@
 name: Build Godot Project
 
 on:
-  # push:
-  #   branches: [ 'main' ]
+  push:
+    branches: [ 'main' ]
   workflow_dispatch: {}
-  
+
 jobs:
   export_web:
     name: Export
@@ -28,15 +28,10 @@ jobs:
           use_preset_export_path: true
           export_debug: false
 
-      - name: Archive the build
-        uses: actions/upload-artifact@v3
-        with:
-          name: HTML5 build
-          path: ./builds/html
       - uses: KikimoraGames/itch-publish@v0.0.3
         with:
           butlerApiKey: ${{secrets.BUTLER_API_KEY}}
           gameData: ./builds/html
           itchUsername: badcop
-          itchGameId: jokes
+          itchGameId: dreams
           buildChannel: html
