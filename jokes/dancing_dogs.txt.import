@@ -1,0 +1,14 @@
+[remap]
+
+importer="audio.label_importer"
+type="AudioLabelList"
+uid="uid://bcw45w2d2bikf"
+path="res://godot/imported/dancing_dogs.txt-478e9d3cb0642a032e241524b18a171d.tres"
+
+[deps]
+
+source_file="res://jokes/dancing_dogs.txt"
+dest_files=["res://godot/imported/dancing_dogs.txt-478e9d3cb0642a032e241524b18a171d.tres"]
+
+[params]
+

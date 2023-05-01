@@ -1,0 +1,14 @@
+[remap]
+
+importer="audio.label_importer"
+type="AudioLabelList"
+uid="uid://drlnpe1fr7f0e"
+path="res://godot/imported/fart_jokes.txt-eeb971714fd891c404aef16078d8f059.tres"
+
+[deps]
+
+source_file="res://jokes/fart_jokes.txt"
+dest_files=["res://godot/imported/fart_jokes.txt-eeb971714fd891c404aef16078d8f059.tres"]
+
+[params]
+

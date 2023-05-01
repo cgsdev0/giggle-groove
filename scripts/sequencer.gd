@@ -10,8 +10,8 @@ func _ready():
 	Signals.start_game2.connect(on_start)
 	Signals.game_over2.connect(on_game_end)
 	Signals.game_over.connect(on_game_end1)
-	jokes.shuffle()
-	# on_next()
+	if !OS.is_debug_build():
+		jokes.shuffle()
 
 func on_game_end1():
 	$RootControl/Control.clear()

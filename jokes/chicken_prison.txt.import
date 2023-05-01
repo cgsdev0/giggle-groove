@@ -1,0 +1,14 @@
+[remap]
+
+importer="audio.label_importer"
+type="AudioLabelList"
+uid="uid://c2ouv62ym10tv"
+path="res://godot/imported/chicken_prison.txt-885d89fd9cce0d742a787693e36011bf.tres"
+
+[deps]
+
+source_file="res://jokes/chicken_prison.txt"
+dest_files=["res://godot/imported/chicken_prison.txt-885d89fd9cce0d742a787693e36011bf.tres"]
+
+[params]
+

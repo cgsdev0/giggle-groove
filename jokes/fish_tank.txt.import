@@ -1,0 +1,14 @@
+[remap]
+
+importer="audio.label_importer"
+type="AudioLabelList"
+uid="uid://v1rhsuqebko7"
+path="res://godot/imported/fish_tank.txt-8baf17741855a63cecbd75d9aa338097.tres"
+
+[deps]
+
+source_file="res://jokes/fish_tank.txt"
+dest_files=["res://godot/imported/fish_tank.txt-8baf17741855a63cecbd75d9aa338097.tres"]
+
+[params]
+

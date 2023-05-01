@@ -49,4 +49,4 @@ func do_anim2():
 func do_anim():
 	$Curtains.play("open")
 	await $Curtains.animation_finished
-	Signals.start_game2.emit()
+	Signals.start_game1a.emit()
