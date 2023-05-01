@@ -4,7 +4,7 @@ class_name JokeController extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	Signals.restart.connect(on_restart)
 	
 var pause = null
 var start = 0
@@ -20,6 +20,9 @@ var react_at = 10000
 var laughing = false
 var laugh_streak = 0
 
+func on_restart():
+	$AudioStreamPlayer.stop()
+	
 func is_whiffed():
 	var last_section = scored[len(scored) - 1]
 	return !last_section[len(last_section) - 1]
@@ -223,6 +226,7 @@ func update_text_size():
 	
 func _process(delta):
 	update_text_size()
+	var game_idx = Signals.game_idx
 	if ($AudioStreamPlayer.get_playback_position() > react_at) && !laughing:
 		laughing = true
 		if is_laughable():
@@ -230,11 +234,15 @@ func _process(delta):
 		else:
 			laugh_streak = 0
 		await $%Scoreboard.report_score(tally_score(), get_summary().pick_random())
+		if game_idx != Signals.game_idx:
+			return
 		if is_laughable():
 			$Laughtrack.play_some(3, 5)
 		else:
 			$Jeers.play_some(1, 1)
 		await get_tree().create_timer(3.0).timeout
+		if game_idx != Signals.game_idx:
+			return
 		Signals.next_joke.emit()
 	
 	if joke:

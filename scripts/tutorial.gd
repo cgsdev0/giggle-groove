@@ -6,14 +6,22 @@ var pressed = [false, false]
 func _ready():
 	hide()
 	Signals.start_game1a.connect(show_once)
+	Signals.restart.connect(restart)
 
+func restart():
+	hide()
+	
 func show_once():
+	if !Signals.is_started:
+		return
 	if pressed[0] && pressed[1]:
 		Signals.start_game2.emit()
 		return
 	show()
 
 func _process(delta):
+	if !visible:
+		return
 	if Input.is_action_just_pressed("row0") && !pressed[0]:
 		pressed[0] = true
 		$Confirm.play()

@@ -18,5 +18,5 @@ func _ready():
 func play_some(lmin: int, lmax: int):
 	choices.shuffle()
 	for i in range(randi_range(lmin, lmax)):
-		await get_tree().create_timer(randf_range(0.0, 0.2)).timeout
+		await get_tree().create_timer(randf_range(0.0, 0.2), false).timeout
 		get_child(choices[i]).play()

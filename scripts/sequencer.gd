@@ -13,15 +13,27 @@ func _ready():
 	if !OS.is_debug_build():
 		jokes.shuffle()
 
+func _process(delta):
+	if Input.is_action_just_pressed("restart") && Signals.is_started:
+		Signals.restart.emit()
+		count_jokes = 0
+		jokes.shuffle()
+		$RootControl/Control.laugh_streak = 0
+		$RootControl/Control.clear()
+		Signals.start_game2.emit()
+		
 func on_game_end1():
 	$RootControl/Control.clear()
 	$RootControl/Control/AnimationPlayer.play_backwards("show_ui")
+	
 func on_start():
 	count_jokes = 0
 	on_next()
 
 	
 func on_next():
+	if !Signals.is_started:
+		return
 	if (OS.is_debug_build() && count_jokes >= 2) || count_jokes >= 10:
 		Signals.game_over.emit()
 		return
@@ -47,5 +59,5 @@ func _on_button_pressed():
 	$%Button.hide()
 	$%Grumbly.play("fade_out")
 	Signals.start_game.emit()
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(1.0, false).timeout
 	$RootControl/Control/AnimationPlayer.play("show_ui")
