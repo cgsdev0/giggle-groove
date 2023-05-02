@@ -268,7 +268,7 @@ thickness = 4
 
 [node name="Node" type="Node"]
 script = ExtResource("1_madbc")
-jokes = Array[Resource("res://addons/label_importer/audio_label_list.gd")]([ExtResource("2_1kysj"), ExtResource("2_wt7j6"), ExtResource("2_o6hhy"), ExtResource("2_1ctec"), ExtResource("3_3jfhd"), ExtResource("2_1ln6f"), ExtResource("3_0k4qi"), ExtResource("5_nxa5c"), ExtResource("6_4xeu6"), ExtResource("7_h8l4o"), ExtResource("8_teytn"), ExtResource("3_vonaj"), ExtResource("3_k2faa"), ExtResource("11_bpilq"), ExtResource("12_ghjq6"), ExtResource("3_ppqeh"), ExtResource("3_rwu0v"), ExtResource("3_2kymy"), ExtResource("16_8qqvi"), ExtResource("3_3bvoc"), ExtResource("3_7acs8"), ExtResource("3_0fixq"), ExtResource("3_aswj6")])
+jokes = Array[Resource("res://addons/label_importer/audio_label_list.gd")]([ExtResource("3_ppqeh"), ExtResource("2_1kysj"), ExtResource("2_wt7j6"), ExtResource("2_o6hhy"), ExtResource("2_1ctec"), ExtResource("3_3jfhd"), ExtResource("2_1ln6f"), ExtResource("3_0k4qi"), ExtResource("5_nxa5c"), ExtResource("6_4xeu6"), ExtResource("7_h8l4o"), ExtResource("8_teytn"), ExtResource("3_vonaj"), ExtResource("3_k2faa"), ExtResource("11_bpilq"), ExtResource("12_ghjq6"), ExtResource("3_rwu0v"), ExtResource("3_2kymy"), ExtResource("16_8qqvi"), ExtResource("3_3bvoc"), ExtResource("3_7acs8"), ExtResource("3_0fixq"), ExtResource("3_aswj6")])
 
 [node name="RootControl" type="Control" parent="."]
 layout_mode = 3
